@@ -1,6 +1,9 @@
 <template>
 
     <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+      <aside class="aside">
+        vueDemo
+      </aside>
       <el-menu :default-active="this.$router.path"
                router
                class="el-menu-demo"
@@ -34,4 +37,12 @@
 .el-icon-menu{
   margin-left: 1px;
 }
+  .aside{
+    font-size: 20px;
+    line-height: 60px;
+    background-color: #66BAB7;
+    margin-right: 1px;
+    text-align: center;
+    color: white;
+  }
 </style>

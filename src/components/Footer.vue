@@ -20,5 +20,6 @@
 <style scoped>
   .footer{
     background: #66BAB7;
+    text-align: center;
   }
 </style>

@@ -1,21 +1,12 @@
 <template>
-    <el-container style="border: 1px solid #eee" id="app">
-      <aside-tag/>
-      <el-container direction="vertical">
-        <header-tag/>
-        <el-main class="el-main">
-          <router-view/>
-        </el-main>
-        <footer-tag/>
-      </el-container>
 
-    </el-container>
+  <transition name="fade" mode="out-in">
+    <router-view/>
+  </transition>
 </template>
 
 <script>
-import Aside from './components/Aside';
-import Footer from './components/Footer';
-import Header from './components/Header'
+
 
   export default {
     name: 'App',
@@ -26,9 +17,7 @@ import Header from './components/Header'
       }
     },
     components:{
-      "headerTag": Header,
-      "footerTag": Footer,
-      "asideTag": Aside
+
     }
   }
 
@@ -36,14 +25,13 @@ import Header from './components/Header'
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
-  .el-main{
-    min-height:700px;
-  }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 </style>

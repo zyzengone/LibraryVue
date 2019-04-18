@@ -1,16 +1,27 @@
 <template>
-  <div id="home">
     <!--自动将驼峰式命名userTag转换为这种-->
-
-    <users-tag v-bind:usersValue="users"></users-tag>
-
-  </div>
+    <el-container style="border: 1px solid #eee" id="home">
+      <template>
+        <aside-tag/>
+        <el-container direction="vertical">
+          <header-tag/>
+          <el-main class="el-main">
+            <transition name="fade">
+            <router-view/>
+              </transition>
+          </el-main>
+          <footer-tag/>
+        </el-container>
+       </template>
+    </el-container>
 </template>
 
 <script>
   //局部导入组件Users
   import Users from './Users'
-
+  import Aside from './Aside';
+  import Footer from './Footer';
+  import Header from './Header'
 
   export default {
     name: 'Home',
@@ -18,7 +29,9 @@
     //注册主键
     components: {
       "usersTag": Users,
-
+      "headerTag": Header,
+      "footerTag": Footer,
+      "asideTag": Aside
     },
     data() {
       return {
@@ -53,12 +66,13 @@
 </script>
 
 <style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+  .el-main{
+    min-height:700px;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .3s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
   }
 </style>
